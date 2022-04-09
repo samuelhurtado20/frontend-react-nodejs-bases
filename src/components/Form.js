@@ -1,6 +1,7 @@
 //import React from 'react'
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Swal from 'sweetalert2'
 
 export default function Form() {
     const [name, setName] = useState('')
@@ -12,6 +13,13 @@ export default function Form() {
         const newEmployee = { name, lastName, salary }
         const response = await axios.post('http://localhost:4020/api/test/create', newEmployee)
         console.log(response)
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: response.statusText,
+            showConfirmButton: false,
+            timer: 1500
+          })
     }
 
     return (
